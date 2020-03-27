@@ -3,16 +3,16 @@
 #include <limits.h>
 #include <caesar.h>
 
-void gen_test(char *str, int shift)
+void gen_test(char *str, int str_len, int shift)
 {
     char *res1, *res2;
 
     printf("Encrypt text '%s'\n", str);
-    res1 = caesar_encrypt(str, shift);
+    res1 = caesar_encrypt(str, str_len, shift);
     printf("Result:       %s\n", res1);
 
     printf("Decrypt text '%s'\n", res1);
-    res2 = caesar_decrypt(res1, shift);
+    res2 = caesar_decrypt(res1, str_len, shift);
     printf("Result:       %s\n", res2);
 
     free(res1);
@@ -33,11 +33,12 @@ int main(void)
     check_magic_number();
 
     char orig_str[] = "People of Earth, your attention please";
+    int orig_len = sizeof(orig_str);
 
     printf("Test 1: Shift with a negative input\n");
-    gen_test(orig_str, INT_MIN);
+    gen_test(orig_str, orig_len, -INT_MAX);
     printf("\nTest 2: Shift with a positive input\n");
-    gen_test(orig_str, INT_MAX);
+    gen_test(orig_str, orig_len, INT_MAX);
 
     return 0;
 }
