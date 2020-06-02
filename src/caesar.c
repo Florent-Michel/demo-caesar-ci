@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 
 #define NB_LTR ('z' - 'a' + 1)
 
@@ -23,7 +24,7 @@ char *caesar_encrypt(char *str, int shift)
 {
     int abs_shift = absolute_int(shift);
     int i = 0;
-    char *buf = (char *)malloc(sizeof(str));
+    char *buf = (char *)malloc(strlen(str));
 
     while (*str) {
         if (*str >= 'a' && *str <= 'z')
@@ -44,7 +45,7 @@ char *caesar_decrypt(char *str, int shift)
 {
     int abs_shift = absolute_int(shift);
     int i = 0;
-    char *buf = (char *)malloc(sizeof(str));
+    char *buf = (char *)malloc(strlen(str));
 
     while (*str) {
         if (*str >= 'a' && *str <= 'z')
