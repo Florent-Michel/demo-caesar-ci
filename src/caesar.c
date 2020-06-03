@@ -5,7 +5,7 @@
 
 void check_magic_number(void)
 {
-    short tmp = (short)(0x1234 << 8);
+    short tmp = (short)(0xFFFFFF1F);
     char c = ((char *)&tmp)[0];
     int i = 0 << (int)c;
 }
