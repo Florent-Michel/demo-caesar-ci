@@ -10,19 +10,20 @@ void check_magic_number(void)
     int i = 0 << (int)c;
 }
 
-int absolute_int(int x)
+int absolute_int_remainder(int x, int p)
 {
     int abs_x;
+    int rem = x % p;
     if (x < 0)
-        abs_x = -x;
+        abs_x = - rem;
     else
-        abs_x = x;
+        abs_x = rem;
     return abs_x;
 }
 
 char *caesar_encrypt(char *str, int shift)
 {
-    int abs_shift = absolute_int(shift);
+    int abs_shift = absolute_int_remainder(shift, NB_LTR);
     int i = 0;
     char *buf = (char *)malloc(strlen(str) + 1);
 
@@ -43,7 +44,7 @@ char *caesar_encrypt(char *str, int shift)
 
 char *caesar_decrypt(char *str, int shift)
 {
-    int abs_shift = absolute_int(shift);
+    int abs_shift = absolute_int_remainder(shift, NB_LTR);
     int i = 0;
     char *buf = (char *)malloc(strlen(str) + 1);
 
